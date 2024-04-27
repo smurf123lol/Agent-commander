@@ -63,6 +63,7 @@
     <Compile Include="Assets\ThirdParty\Vosk\VoskPINVOKE.cs" />
     <Compile Include="Assets\Scripts\RecognitionResult.cs" />
     <Compile Include="Assets\Scripts\VoskSpeechToText.cs" />
+    <Compile Include="Assets\Scripts\AgentScript.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\SpkModel.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\Vosk.cs" />
