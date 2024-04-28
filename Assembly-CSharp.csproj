@@ -60,19 +60,21 @@
     <Analyzer Include="E:\UnityEditors\2022.3.5f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Recognition\VoiceProcessor.cs" />
+    <Compile Include="Assets\Scripts\Recognition\VoskDialogText.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\VoskPINVOKE.cs" />
-    <Compile Include="Assets\Scripts\RecognitionResult.cs" />
-    <Compile Include="Assets\Scripts\VoskSpeechToText.cs" />
     <Compile Include="Assets\Scripts\AgentScript.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\SpkModel.cs" />
+    <Compile Include="Assets\Scripts\Recognition\RecognitionResult.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\Vosk.cs" />
-    <Compile Include="Assets\Scripts\VoskResultText.cs" />
-    <Compile Include="Assets\Scripts\VoiceProcessor.cs" />
+    <Compile Include="Assets\Scripts\Recognition\VoskResultText.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\Model.cs" />
+    <Compile Include="Assets\Scripts\DestinationPoint.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\VoskRecognizer.cs" />
     <Compile Include="Assets\Scripts\UI\Settings.cs" />
-    <Compile Include="Assets\Scripts\VoskDialogText.cs" />
+    <Compile Include="Assets\Scripts\TDCameraScript.cs" />
+    <Compile Include="Assets\Scripts\Recognition\VoskSpeechToText.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ThirdParty\Zip\Ionic.Zip.Unity.dll" />

@@ -1,32 +1,8 @@
-/* * * * *
- * A unity voice processor
- * ------------------------------
- * 
- * A Unity script for recording and delivering frames of audio for real-time processing
- * 
- * Written by Picovoice 
- * 2021-02-19
- * 
- * Apache License
- * 
- * Copyright (c) 2021 Picovoice
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *   
- *   http://www.apache.org/licenses/LICENSE-2.0
- *   
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- * 
- * * * * */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -35,6 +11,7 @@ using UnityEngine;
 /// </summary>
 public class VoiceProcessor : MonoBehaviour
 {
+    
     /// <summary>
     /// Indicates whether microphone is capturing or not
     /// </summary>
@@ -42,8 +19,7 @@ public class VoiceProcessor : MonoBehaviour
     {
         get { return _audioClip != null && Microphone.IsRecording(CurrentDeviceName); }
     }
-
-    [SerializeField] private int MicrophoneIndex;
+    private int MicrophoneIndex;
 
     /// <summary>
     /// Sample rate of recorded audio
@@ -71,27 +47,9 @@ public class VoiceProcessor : MonoBehaviour
     public event Action OnRecordingStart;
 
     /// <summary>
-    /// Available audio recording devices
-    /// </summary>
-    public List<string> Devices { get; private set; }
-
-    /// <summary>
-    /// Index of selected audio recording device
-    /// </summary>
-    public int CurrentDeviceIndex { get; private set; }
-
-    /// <summary>
     /// Name of selected audio recording device
     /// </summary>
-    public string CurrentDeviceName
-    {
-        get
-        {
-            if (CurrentDeviceIndex < 0 || CurrentDeviceIndex >= Microphone.devices.Length)
-                return string.Empty;
-            return Devices[CurrentDeviceIndex];
-        }
-    }
+    public string CurrentDeviceName;
 
     [Header("Voice Detection Settings")]
     [SerializeField, Tooltip("The minimum volume to detect voice input for"), Range(0.0f, 1.0f)]
@@ -116,33 +74,26 @@ public class VoiceProcessor : MonoBehaviour
     {
         UpdateDevices();
     }
-#if UNITY_EDITOR
-    void Update()
-    {
-        if (CurrentDeviceIndex != MicrophoneIndex)
-        {
-            ChangeDevice(MicrophoneIndex);
-        }
-    }
-#endif
 
     /// <summary>
     /// Updates list of available audio devices
     /// </summary>
     public void UpdateDevices()
     {
-        Devices = new List<string>();
-        foreach (var device in Microphone.devices)
-            Devices.Add(device);
 
-        if (Devices == null || Devices.Count == 0)
+
+        if (Microphone.devices == null || Microphone.devices.Length == 0)
         {
-            CurrentDeviceIndex = -1;
             Debug.LogError("There is no valid recording device connected");
             return;
         }
-
-        CurrentDeviceIndex = MicrophoneIndex;
+        CurrentDeviceName = PlayerPrefs.GetString("InputDeviceName");
+        if (Microphone.devices.ToList().Find(device => device == CurrentDeviceName) == null)
+        {
+            Debug.LogError("microphone from settings not exist");
+            CurrentDeviceName = Microphone.devices[0];
+            return;
+        }
     }
 
     /// <summary>
@@ -151,19 +102,19 @@ public class VoiceProcessor : MonoBehaviour
     /// <param name="deviceIndex">Index of the new audio capture device</param>
     public void ChangeDevice(int deviceIndex)
     {
-        if (deviceIndex < 0 || deviceIndex >= Devices.Count)
+
+        if (deviceIndex < 0 || deviceIndex >= Microphone.devices.Length)
         {
             Debug.LogError(string.Format("Specified device index {0} is not a valid recording device", deviceIndex));
             return;
         }
-
         if (IsRecording)
         {
             // one time event to restart recording with the new device 
             // the moment the last session has completed
             RestartRecording += () =>
             {
-                CurrentDeviceIndex = deviceIndex;
+                CurrentDeviceName = Microphone.devices[deviceIndex];
                 StartRecording(SampleRate, FrameLength);
                 RestartRecording = null;
             };
@@ -171,7 +122,7 @@ public class VoiceProcessor : MonoBehaviour
         }
         else
         {
-            CurrentDeviceIndex = deviceIndex;
+            CurrentDeviceName = Microphone.devices[deviceIndex];
         }
     }
 

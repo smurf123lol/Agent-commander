@@ -15,6 +15,7 @@ public class VoskResultText : MonoBehaviour
     {
         Debug.Log(obj);
         var result = new RecognitionResult(obj);
+        ResultText.text = "";
         for (int i = 0; i < result.Phrases.Length; i++)
         {
             if (i > 0)
@@ -24,6 +25,5 @@ public class VoskResultText : MonoBehaviour
 
             ResultText.text += result.Phrases[i].Text;
         }
-    	ResultText.text += "\n";
     }
 }
