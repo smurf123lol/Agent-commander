@@ -24,8 +24,10 @@ public class AgentScript : MonoBehaviour
         foreach (var item in result.Phrases) {
             foreach (var dest in KnownDestinations)
             {
-                if(dest.TranscriptionName.ToLower()==item.Text) {
-                    SetDestination(dest.gameObject);
+                //if(dest.TranscriptionName.ToLower()==item.Text) {
+                if (item.Text.Contains(dest.TranscriptionName.ToLower()))
+                {
+                        SetDestination(dest.gameObject);
                 }
             }
         }

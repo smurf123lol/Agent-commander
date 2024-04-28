@@ -80,15 +80,8 @@ public class VoskDialogText : MonoBehaviour
 	}
 
 	void AddResponse(string response) {
-        Say(response);
+        //Say(response);
 		DialogText.text = response + "\n\n";
-
-		DialogText.text += "крестьянин " + (man_left ? "слева" : "справа") + "\n";
-		DialogText.text += "волк " + (wolf_left ? "слева" : "справа") + "\n";
-		DialogText.text += "коза " + (goat_left ? "слева" : "справа") + "\n";
-		DialogText.text += "капуста " + (cabbage_left ? "слева" : "справа") + "\n";
-
-		DialogText.text += "\n";
 	}
 
     private void OnTranscriptionResult(string obj)
