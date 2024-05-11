@@ -4,3 +4,5 @@ Temp
 /.vs
 /build
 Bunny83.simpleJson.csproj
+/docs/doxygen
+/docs/logseq/bak

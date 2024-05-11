@@ -2033,7 +2033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
@@ -2343,6 +2343,7 @@ GameObject:
   - component: {fileID: 1249319558}
   - component: {fileID: 1249319557}
   - component: {fileID: 1249319556}
+  - component: {fileID: 1249319559}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2400,6 +2401,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1249319559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249319555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683cd4dc57b6bf247963feef1fce1a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraCodePairs:
+  - Camera: {fileID: 0}
+    keyCode: 49
 --- !u!1 &1279725709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c589585f91239b44db28ce6c71d6fa9d,

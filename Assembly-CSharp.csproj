@@ -61,18 +61,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Recognition\VoiceProcessor.cs" />
+    <Compile Include="Assets\Scripts\Cameras\RotatingCamera.cs" />
     <Compile Include="Assets\Scripts\Recognition\VoskDialogText.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\VoskPINVOKE.cs" />
     <Compile Include="Assets\Scripts\AgentScript.cs" />
+    <Compile Include="Assets\Scripts\Cameras\BaseCamera.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\SpkModel.cs" />
     <Compile Include="Assets\Scripts\Recognition\RecognitionResult.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\Vosk.cs" />
     <Compile Include="Assets\Scripts\Recognition\VoskResultText.cs" />
+    <Compile Include="Assets\Scripts\Cameras\TopDownCamera.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\Model.cs" />
     <Compile Include="Assets\Scripts\DestinationPoint.cs" />
     <Compile Include="Assets\ThirdParty\Vosk\VoskRecognizer.cs" />
     <Compile Include="Assets\Scripts\UI\Settings.cs" />
+    <Compile Include="Assets\Scripts\Cameras\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Cameras\StaticCamera.cs" />
     <Compile Include="Assets\Scripts\TDCameraScript.cs" />
     <Compile Include="Assets\Scripts\Recognition\VoskSpeechToText.cs" />
   </ItemGroup>
