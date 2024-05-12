@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*\brief Базовый класс камеры
+ */
 [RequireComponent(typeof(Camera))]
 public class BaseCamera : MonoBehaviour
 {
-    bool Active;
-    Camera camera;
+    public bool Active;
+    public Camera mCamera;
+
     void Awake()
     {
         Active = false;
-        camera = GetComponent<Camera>();
+        mCamera = GetComponent<Camera>();
+        mCamera.enabled = Active;
     }
 }

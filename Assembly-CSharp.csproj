@@ -78,7 +78,6 @@
     <Compile Include="Assets\Scripts\UI\Settings.cs" />
     <Compile Include="Assets\Scripts\Cameras\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Cameras\StaticCamera.cs" />
-    <Compile Include="Assets\Scripts\TDCameraScript.cs" />
     <Compile Include="Assets\Scripts\Recognition\VoskSpeechToText.cs" />
   </ItemGroup>
   <ItemGroup>

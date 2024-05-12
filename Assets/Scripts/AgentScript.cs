@@ -6,17 +6,16 @@ using UnityEngine.AI;
 
 public class AgentScript : MonoBehaviour
 {
-    public GameObject casing;
+    // Объект с навмешем
+    public GameObject Casing;
+    // Список точек для перемещения
     public List<DestinationPoint> KnownDestinations;
+    // Объект для перемещения до позиции
     public GameObject destination;
+
     public VoskSpeechToText VoskSpeechToText;
+
     Animator animator;
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        VoskSpeechToText.OnTranscriptionResult += OnTranscriptionResult;
-    }
 
     private void OnTranscriptionResult(string obj)
     {
@@ -32,22 +31,14 @@ public class AgentScript : MonoBehaviour
             }
         }
     }
-
-    void Start()
-    {
-        SetDestination(destination);
-
-    }
-
     void SetDestination(GameObject dest)
     {
         destination = dest;
         animator.SetFloat("speed", 1f);
-        casing.GetComponent<NavMeshAgent>().SetDestination (destination.transform.position);
+        Casing.GetComponent<NavMeshAgent>().SetDestination (destination.transform.position);
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (destination != null)
@@ -58,5 +49,14 @@ public class AgentScript : MonoBehaviour
 
             }
         }
+    }
+    void Start()
+    {
+        SetDestination(destination);
+    }
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        VoskSpeechToText.OnTranscriptionResult += OnTranscriptionResult;
     }
 }
